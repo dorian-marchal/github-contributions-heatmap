@@ -13,18 +13,31 @@
 /* jshint multistr: true */
 /* jshint newcap: false */
 
+var getCssColor = function(hue, saturation, luminosity) {
+	return "hsl(" + hue + ", " + saturation + "%, " + luminosity + "%)";
+};
+
 var timeout = setInterval(function() {
 
 	var $calDays = $(".js-calendar-graph-svg .day");
+	var coldestHue = 240;
+	var hottestHue = 0;
+	var maxContributionCount = 100;
+
 
 	if($calDays.length > 0) {
 
 		clearInterval(timeout);
 
-		console.log("ok");
-
 		$calDays.each(function() {
-			this.style.fill = "#FF00FF";
+
+			var contributionCount = Math.min(parseInt(this.getAttribute("data-count")), maxContributionCount);
+
+			if(contributionCount > 0) {
+
+				var hue = ((contributionCount / (maxContributionCount)) * (hottestHue - coldestHue)) + coldestHue; 
+				this.style.fill = getCssColor(hue, 70, 50);
+			}
 		});
 	}
 
