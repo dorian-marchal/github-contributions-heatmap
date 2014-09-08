@@ -1,7 +1,8 @@
-github-contributions-heatmap
-============================
+Github Contribution Heatmap
+===========================
 
-Userscript permettant de changer les couleurs du graphe de contributions Github pour quelquechose de plus parlant et d'absolu.
+This userscript adds a heatmap to the Github contribution graph.
+Unlike the original greenish graph, the heatmap is absolute and does not depend on the maximum number of contribution you have made in one day. It is also more accurate.
 
 ![heatmap gif](http://www.dorian-marchal.com/assets/heatmap.gif)
 
