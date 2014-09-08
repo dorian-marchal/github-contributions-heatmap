@@ -17,6 +17,22 @@ var getCssColor = function(hue, saturation, luminosity) {
 	return "hsl(" + hue + ", " + saturation + "%, " + luminosity + "%)";
 };
 
+var adjust = function(x, max) {
+
+	if(x < 0 || max === 0) {
+		return;
+	}
+
+	//On repasse la valeur sur [0, 1] avant d'appliquer la fonction
+	var value = x / max;
+
+	var fn = function(x) {
+		return Math.pow((x - 1), 3) + 1;
+	}
+
+	return Math.floor(fn(value) * max);
+}
+
 var timeout = setInterval(function() {
 
 	var $calDays = $(".js-calendar-graph-svg .day");
@@ -35,7 +51,7 @@ var timeout = setInterval(function() {
 
 			if(contributionCount > 0) {
 
-				var hue = ((contributionCount / (maxContributionCount)) * (hottestHue - coldestHue)) + coldestHue; 
+				var hue = ((adjust(contributionCount, maxContributionCount) / (adjust(maxContributionCount, maxContributionCount))) * (hottestHue - coldestHue)) + coldestHue; 
 				this.style.fill = getCssColor(hue, 70, 50);
 			}
 		});
