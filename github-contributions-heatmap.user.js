@@ -1,10 +1,12 @@
 // ==UserScript==
 // @name        Github Contributions Heatmap
-// @description Permettant de changer les couleurs du graphe de contributions Github pour quelquechose de plus parlant et d'absolu.        
+// @description Adds a heatmap to the Github contribution graph.    
 // @author      Dorian MARCHAL
 // @namespace   http://dorian-marchal.com
-// @include     https://github.com/*
+// @updateUrl   https://github.com/dorian-marchal/github-contributions-heatmap
+// @license     GNU GPL v2
 // @version     1
+// @include     https://github.com/*
 // @run-at document-end
 // ==/UserScript==
 
